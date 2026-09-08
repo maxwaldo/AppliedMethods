@@ -1,0 +1,592 @@
+---
+title: "Session 1 — Introduction to R and RStudio"
+subtitle: "Applied Methods · MA Public Administration"
+author: "Maxime Walder"
+date: "September 18, 2026"
+format:
+  revealjs:
+    theme: simple
+    embed-resources: true
+    slide-number: true
+    transition: slide
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Today’s objectives
+
+By the end of this first session, you should be able to:
+
+-   explain how the course is organized and evaluated
+-   identify the main course objectives and expected outputs
+-   form a group and select a first group-project topic
+-   install R and RStudio, or verify that they work on your computer
+-   use RStudio to run simple R commands in a script and in the console
+-   create objects, vectors, factors, functions, and a basic data frame
+-   understand the path and relative path structure for CLI-like commands
+-   import a first `.csv` data file and inspect it
+
+## But first, who are we?
+
+-   First and last name
+-   Current cursus
+-   Expectation from this class
+
+<!-- ## Agenda for today -->
+
+<!-- | Time | Activity | -->
+
+<!-- |---|---| -->
+
+<!-- | 10:15–10:45 | Course presentation and learning objectives | -->
+
+<!-- | 10:45–11:20 | Syllabus, evaluation, assignments, group project | -->
+
+<!-- | 11:20–12:00 | Group formation and topic choice | -->
+
+<!-- | 12:00–13:00 | Lunch break | -->
+
+<!-- | 13:00–13:40 | Installing R and RStudio; first tour of RStudio | -->
+
+<!-- | 13:40–14:25 | R basics: objects, operations, vectors, data frames, functions | -->
+
+<!-- | 14:25–14:50 | Guided exercises | -->
+
+<!-- | 14:50–15:00 | Wrap-up and preparation for Session 2 | -->
+
+## The course in one sentence
+
+This course teaches you how to use R to transform public and administrative data into reproducible, interpretable, and communicable policy analysis.
+
+## Course philosophy
+
+We will not start from abstract formulas.
+
+We will start from practical questions:
+
+-   Where are the data?
+-   What is the unit of analysis?
+-   What needs to be cleaned, recoded, summarized, or visualized?
+-   Which result answers the policy question?
+-   Can someone else reproduce the analysis?
+
+## What you will learn during the semester
+
+-   Data import, cleaning, and transformation
+-   Descriptive statistics and data visualization
+-   Hypothesis testing and regression models
+-   Interaction terms and predicted values
+-   Quarto reports
+-   Shiny applications
+-   Introductory text-as-data methods
+
+## Session planning I
+
+| Session | Date     | Topic                                        |
+|--------:|----------|----------------------------------------------|
+|       1 | Sept. 18 | Introduction to R and RStudio                |
+|       2 | Sept. 25 | Data manipulation and descriptive statistics |
+|       3 | Oct. 2   | Data visualization                           |
+|      \- | Oct. 9   | *Dies academic*                              |
+|       4 | Oct. 16  | Assignment 1 + Quarto reports                |
+|       5 | Oct. 23  | Hypothesis testing and regression            |
+|       6 | Oct. 30  | Interaction terms                            |
+
+## Session planning II
+
+| Session | Date         | Topic                         |
+|--------:|--------------|-------------------------------|
+|      \- | Nov. 6       | *Reading week*                |
+|       7 | Nov. 13      | Assignment 2 + project coding |
+|       8 | Nov. 20      | Text as data                  |
+|       9 | Nov. 27      | Shiny                         |
+|      10 | Dec. 4       | Assignment 3 + web scraping   |
+|   11–12 | Dec. 11 & 18 | Group project presentations   |
+
+## Evaluation: overview
+
+The final grade combines three complementary components.
+
+| Component | Output | Role |
+|------------------------|------------------------|------------------------|
+| In-class assignments | 3 problem sets | Practice and individual assessment |
+| Group project | R script, Quarto report, Shiny app, presentation | Applied policy analysis |
+| Oral exam | Individual discussion of your own project | Code, interpretation, and justification |
+
+## Assignment 1
+
+**Date:** October 16
+
+Focus:
+
+-   inspect a dataset
+-   manipulate and recode variables
+-   compute descriptive statistics
+-   produce basic visualizations
+-   submit a reproducible R script
+
+## Assignment 2
+
+**Date:** November 13
+
+Focus:
+
+-   estimate regression models
+-   include interaction terms
+-   visualize and interpret model results
+-   connect empirical results to a substantive policy question
+
+## Assignment 3
+
+**Date:** December 4
+
+Focus:
+
+-   build a small Shiny application
+-   display descriptive or model-based results interactively
+-   make the app understandable for non-technical users
+
+## Group project: purpose
+
+The group project is a reproducible, data-driven policy report using public or administrative data.
+
+The aim is not only to “run code,” but to produce an analysis that could be useful for public administration.
+
+## Group project: final outputs
+
+Each group submits:
+
+-   a reproducible R script and folder structure
+-   a Quarto report: `.qmd` and rendered `.html`
+-   a small Shiny application
+-   a short in-class work-in-progress presentation
+
+**Final deadline:** January 13, 2027, 20:00.
+
+## Group project: possible data sources
+
+Examples of useful sources:
+
+-   OCSTAT data for Geneva
+-   Swiss Federal Statistical Office data
+-   opendata.swiss datasets
+-   municipal, cantonal, or federal administrative data
+-   public policy documents or parliamentary texts
+-   any other data source, be original!
+
+## Choosing a topic today
+
+A good topic should be:
+
+-   narrow enough to be feasible in one semester
+-   connected to a public-administration question
+-   based on accessible data
+-   answerable with descriptive statistics, visualizations, and possibly simple models
+-   suitable for a small Shiny application
+
+## Topics for group project
+
+Group project can tackle any topic. 
+
+However, topic ust be possible to study using quantitative methods. 
+
+Personal suggestion is to limit to existing administrative data.
+
+Let's see what data cube are easily availble with the [OCSTAT](https://statistique.ge.ch/domaines/tableaux.asp)
+
+## Group formation activity
+
+In groups of 3–4 students:
+
+1.  Choose one provisional topic.
+2.  Identify the possible unit of analysis: commune, canton, year, individual, organization, document.
+3.  Identify one possible outcome variable.
+4.  Identify two possible explanatory or descriptive variables.
+5.  Write one sentence beginning with:\
+    **“Our project studies whether/how...”**
+
+## First feedback group projects
+
+1.  Present the general idea
+2.  Explain what you think should be the outcome
+3.  Explain what are the explanatory factors
+
+## What is R?
+
+R is a programming language and software environment for statistical computing, data analysis, and visualization.
+
+In this course, R is the engine that performs the analysis.
+
+## Install R
+
+Recommended steps:
+
+1.  Go to CRAN: <https://cran.r-project.org/>
+2.  Choose your operating system: Windows, macOS, or Linux
+3.  Download and install the most recent stable version of R
+4.  Open R once to verify that it starts
+
+Note: install **R before RStudio**.
+
+## What is RStudio?
+
+RStudio is an integrated development environment, or IDE.
+
+It makes R easier to use by bringing together:
+
+-   the console
+-   script editor
+-   environment viewer
+-   files, plots, packages, and help
+-   project management tools
+
+## Install RStudio
+
+Recommended steps:
+
+1.  Go to Posit’s RStudio download page: <https://posit.co/download/rstudio-desktop/>
+2.  Download RStudio Desktop for your operating system
+3.  Install and open it
+4.  Check that RStudio detects your R installation
+
+## RStudio interface
+
+The four main panes are:
+
+| Pane | What it is for |
+|------------------------------------|------------------------------------|
+| Source | Write and save scripts |
+| Console | Run commands interactively |
+| Environment | See objects currently stored in memory |
+| Files / Plots / Packages / Help | Navigate files, view plots, load packages, read help |
+
+## Console versus script
+
+The console is useful for testing.
+
+The script is useful for reproducibility.
+
+In this course, most of your work should be written in scripts or Quarto documents, not only typed in the console.
+
+## Classe's workflow
+
+-   All documents are available on Moodle.
+
+-   But also on github [maxwaldo/AppliedMethods](https://github.com/maxwaldo/AppliedMethods)
+
+-   Before each session, you can download the repository and work directly on it.
+
+-   Let's try this!
+
+## Exercice 0
+
+## First basic commands
+
+```{r}
+2 + 2
+10 - 3
+5 * 4
+20 / 5
+sqrt(16)
+```
+
+## Exercice 1
+
+## Assignment operators
+
+In R, we usually store values with `<-`.
+
+```{r}
+age <- 24
+name <- "Geneva"
+ratio <- 10 / 4
+```
+
+Read `<-` as “gets”.
+
+`age <- 24` means: the object `age` gets the value `24`.
+
+## Exercice 2
+
+## Objects in the environment
+
+After creating objects, they appear in the Environment pane.
+
+```{r}
+number_students <- 28
+course_name <- "Applied Methods"
+is_required <- TRUE
+```
+
+Objects can be reused later.
+
+```{r}
+number_students + 2
+```
+
+## Object classes
+
+R objects have classes.
+
+```{r}
+one_number <- 10
+one_character <- "public administration"
+one_logical <- TRUE
+one_factor <- factor("Geneva")
+
+class(one_number)
+class(one_character)
+class(one_logical)
+class(one_factor)
+```
+
+## Exercice 3
+
+## Errors and warnings
+
+Not everything is possible to do in R.
+
+```{r, eval=FALSE}
+my_pet <- "Cat"
+age_pet <- 4
+
+my_pet+age_pet
+```
+
+Why this cannot be done?
+
+Not all command generate an error, some may issue warnings.
+
+## Reading errors
+
+Errors are not failures. They are information.
+
+When you get an error:
+
+1.  read the first line carefully
+2.  identify the object or function mentioned
+3.  check spelling and capitalization
+4.  check whether the package is loaded
+5.  run the code line by line
+
+
+## Exercice 4
+
+## Vectors
+
+A vector stores several values of the same basic type.
+
+In R, you can specify vectors inside of the `c()`
+
+Each element of the vector is separated by a coma.
+
+```{r}
+communes <- c("Carouge", "Cologny", "Lancy", "Meyrin")
+population <- c(22600, 5700, 34400, 27000)
+
+# You can then perform operations on these vectors
+average_population <- mean(population)
+average_population
+```
+
+## Vectors
+
+Vectors are unidimensional (VS data frame or matrix).
+
+You can access content of vectors by specifying the index of the observation
+
+```{r}
+communes[2] # Get the second element of the vector
+```
+
+## Exercice 5
+
+## Data frames
+
+A data frame is a rectangular dataset:
+
+-   rows are observations
+-   columns are variables
+
+```{r}
+municipal_data <- data.frame(
+  commune = communes,
+  population = population
+)
+
+municipal_data
+```
+
+## Data frames
+
+Data frames have two dimensions, rows and columns.
+
+You can access the content of specific cells by specifying the index for the rows, and the columns
+
+`data[row,column]`
+
+```{r}
+
+municipal_data[1,] ## First row all columns
+municipal_data[,1] ## First column all rows
+municipal_data[1,1] ## First row and first column
+
+
+```
+
+## Data frames
+
+In data frames, the columns are the variables, the lines are the observations.
+
+You can also access the content of specific variable using the atomic character `$`
+
+```{r}
+municipal_data$population
+```
+
+## Exercice 6
+
+## Functions
+
+A function takes inputs, performs operations, and returns an output.
+
+To create a function, you have a built in `function` option.
+
+```{r}
+divide_by_4_add_1 <- function(x) {
+  x / 4 + 1
+}
+
+divide_by_4_add_1(20)
+```
+
+## Functions
+
+You can also have multiple arguments in a function
+
+```{r}
+divide_by_4_add_n <- function(x, n) {
+  x / 4 + n
+}
+
+divide_by_4_add_n(20, 4)
+```
+
+## Functions
+
+Functions can also have default values
+
+```{r}
+divide_by_4_add_n <- function(x = 10, n = 4) {
+  x / 4 + n
+}
+
+divide_by_4_add_n(20, 2) # Same as before
+divide_by_4_add_n() # Function with default value
+```
+
+## Functions
+
+Finally functions can also be more or less robust and well documented
+
+If I run: `divide_by_4_add_n("Cat", "Dog")` `Error in x/4 : non-numeric argument to binary operator`
+
+```{r}
+
+divide_by_4_add_n <- function(x, n) {
+  
+  if (!is.numeric(x) | !is.numeric(n)) {
+    stop(
+      paste0(
+        "x and n must be numeric, but an object of class non-numeric was provided. \n x is '",
+        class(x)[1], 
+        "'\n and n is '",
+        class(n)[1], "'"
+      )
+    )
+  }
+  
+  x / 4 + n
+}
+
+```
+
+## Exercice 7
+
+## Packages and libraries
+
+Packages extend what R can do.
+
+Install a package once:
+
+```{r, eval=FALSE}
+install.packages("readr")
+```
+
+Load it in each new R session:
+
+```{r, eval=FALSE}
+library(readr)
+```
+
+Careful: For some reason, you need to put "" when installing package, but not when loading libraries.
+
+## Packages and libraries
+
+There are lots of packages and libraries functionning in R.
+
+You can also developp your own package and make it available for everyone.
+
+Some packages are available not with the official distribution channel. You can use function from the `devtools` or the `remotes` packages to install these softwares. 
+
+## Exercice 8
+
+## Understanding path and relative path
+
+With R, and other programming languages, it is useful to understand how to navigate your computer. 
+
+Basicall, your computer is organized in folder. You can specify where files and folders are with _paths_.
+
+For instance, the command `getwd()` gives you the current working directory. 
+
+You can change this directory with `setwd()` or you can precise path with caracter variable.
+
+
+
+## Importing a first data frame
+
+```{r, eval=FALSE}
+# Import with the full path
+first_data <- read.csv("~/Desktop/Teaching_Grading/Applied methods/session_01_applied_methods/data/session_01_first_dataset.csv") 
+
+# Or set working directory and import with relative path
+setwd("~/Desktop/Teaching_Grading/Applied methods/session_01_applied_methods/")
+
+first_data <- read.csv("data/session_01_first_dataset.csv") 
+
+
+View(first_data)
+head(first_data)
+str(first_data)
+summary(first_data)
+```
+
+## Exercice 9
+
+
+
+## Wrap-up
+
+Today you learned how to:
+
+-   navigate the course organization and evaluation
+-   form groups and choose a provisional project topic
+-   distinguish R from RStudio
+-   use the RStudio interface
+-   write reproducible R code in a script
+-   create objects, vectors, factors, functions, and data frames
+-   import and inspect a first dataset
+
+## Questions ?
